@@ -54,4 +54,8 @@ steps:
 images:
   - 'us-south1-docker.pkg.dev/taskade-mcp-github/cloud-run-source-deploy/taskade-mcp'
 
+# ✅ Add logging option to satisfy user-managed service account restrictions
+options:
+  logging: CLOUD_LOGGING_ONLY
+
 timeout: '900s'
