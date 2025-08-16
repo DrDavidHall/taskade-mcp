@@ -22,9 +22,9 @@
   },
   "devDependencies": {
     "@taskade/mcp-openapi-codegen": "*",
-    "npm-run-all": "^4.1.5",               // ✅ Needed for `run-s`
-    "yarn": "^1.22.19",                     // ✅ Ensures yarn is available during build
-    "tsx": "^3.12.7"                        // ✅ Add if not already installed globally
+    "npm-run-all": "^4.1.5",
+    "tsx": "^4.6.3",
+    "yarn": "^1.22.19"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.0",
