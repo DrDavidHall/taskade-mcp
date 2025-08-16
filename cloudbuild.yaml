@@ -17,7 +17,7 @@ steps:
     args: ['run', 'test']
     dir: 'packages/server'
 
-  # Build Docker image
+  # Build Docker image from the server package
   - name: 'gcr.io/cloud-builders/docker'
     args: [
       'build',
@@ -27,14 +27,14 @@ steps:
     ]
     dir: 'packages/server'
 
-  # Push Docker image
+  # Push Docker image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: [
       'push',
       'us-south1-docker.pkg.dev/taskade-mcp-github/cloud-run-source-deploy/taskade-mcp'
     ]
 
-  # Deploy to Cloud Run
+  # Deploy the image to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
     args:
@@ -50,5 +50,8 @@ steps:
         'managed',
         '--allow-unauthenticated'
       ]
+
+images:
+  - 'us-south1-docker.pkg.dev/taskade-mcp-github/cloud-run-source-deploy/taskade-mcp'
 
 timeout: '900s'
