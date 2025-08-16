@@ -1,14 +1,40 @@
 steps:
+  # Install dependencies
   - name: 'node'
     entrypoint: 'npm'
     args: ['install']
 
+  # Build the app
   - name: 'node'
     entrypoint: 'npm'
     args: ['run', 'build']
 
+  # Run tests
   - name: 'node'
     entrypoint: 'npm'
     args: ['run', 'test']
+
+  # Build Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'us-south1-docker.pkg.dev/taskade-mcp-github/cloud-run-source-deploy/taskade-mcp', '.']
+
+  # Push Docker image to Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'us-south1-docker.pkg.dev/taskade-mcp-github/cloud-run-source-deploy/taskade-mcp']
+
+  # Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      [
+        'run', 'deploy', 'taskade-mcp',
+        '--image', 'us-south1-docker.pkg.dev/taskade-mcp-github/cloud-run-source-deploy/taskade-mcp',
+        '--region', 'us-south1',
+        '--platform', 'managed',
+        '--allow-unauthenticated'
+      ]
+
+images:
+  - 'us-south1-docker.pkg.dev/taskade-mcp-github/cloud-run-source-deploy/taskade-mcp'
 
 timeout: '900s'
