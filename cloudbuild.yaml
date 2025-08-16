@@ -1,23 +1,19 @@
 steps:
-  # Install dependencies with fallback for peer conflict resolution
   - name: 'node'
     entrypoint: 'npm'
     args: ['install', '--legacy-peer-deps']
     dir: 'packages/server'
 
-  # Build the app
   - name: 'node'
     entrypoint: 'npm'
     args: ['run', 'build']
     dir: 'packages/server'
 
-  # Run tests
   - name: 'node'
     entrypoint: 'npm'
     args: ['run', 'test']
     dir: 'packages/server'
 
-  # Build Docker image from the server package
   - name: 'gcr.io/cloud-builders/docker'
     args: [
       'build',
@@ -27,14 +23,12 @@ steps:
     ]
     dir: 'packages/server'
 
-  # Push Docker image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: [
       'push',
       'us-south1-docker.pkg.dev/taskade-mcp-github/cloud-run-source-deploy/taskade-mcp'
     ]
 
-  # Deploy the image to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
     args:
@@ -53,5 +47,8 @@ steps:
 
 images:
   - 'us-south1-docker.pkg.dev/taskade-mcp-github/cloud-run-source-deploy/taskade-mcp'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
 
 timeout: '900s'
