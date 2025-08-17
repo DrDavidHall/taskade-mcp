@@ -3,28 +3,28 @@
   "version": "0.0.1",
   "author": "Prev Wong",
   "license": "MIT",
-  "type": "module",
+  "type": "commonjs",
   "repository": {
     "type": "git",
     "url": "https://github.com/taskade/mcp/"
   },
-  "main": "bin/cli.mjs",
+  "main": "dist/index.js",
   "bin": {
-    "taskade-mcp-server": "bin/cli.mjs"
+    "taskade-mcp-server": "dist/index.js"
   },
   "scripts": {
     "fetch:openapi": "curl -o taskade-public.yaml https://www.taskade.com/api/documentation/yaml",
     "generate:taskade-mcp-tools": "tsx scripts/gen-taskade-mcp-tools.ts",
-    "build:cli": "tsx scripts/build-cli.ts",
-    "build": "run-s generate:taskade-mcp-tools build:cli && yarn --cwd=../../ lint:fix",
-    "start:dev": "tsx src/http.ts --watch",
-    "start": "node dist/http.js"
+    "build": "tsc -b",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js"
   },
   "devDependencies": {
     "@taskade/mcp-openapi-codegen": "*",
     "npm-run-all": "^4.1.5",
     "tsx": "^4.6.3",
-    "yarn": "^1.22.19"
+    "yarn": "^1.22.19",
+    "typescript": "^5.0.0"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.0",
