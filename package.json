@@ -10,7 +10,6 @@
     "build": "yarn workspace @taskade/mcp-server build",
     "start": "yarn workspace @taskade/mcp-server start",
     "dev": "yarn workspace @taskade/mcp-server dev",
-    "generate:taskade-mcp-tools": "yarn workspace @taskade/mcp-server generate:taskade-mcp-tools",
-    "fetch:openapi": "yarn workspace @taskade/mcp-server fetch:openapi"
+    "generate:taskade-mcp-tools": "yarn workspace @taskade/mcp-server generate:taskade-mcp-tools"
   }
 }
