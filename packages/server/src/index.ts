@@ -1,9 +1,5 @@
 #!/usr/bin/env node
-import http from 'node:http';
-
-// Preserve your public exports for other imports
-export * from './server';
-export * from './tools.generated';
+import * as http from 'node:http';
 
 const port = Number(process.env.PORT ?? 3000);
 
