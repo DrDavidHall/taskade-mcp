@@ -13,7 +13,7 @@
     "build": "run-s generate:taskade-mcp-tools build:cli",
     "build:cli": "tsx scripts/build-cli.ts",
     "generate:taskade-mcp-tools": "tsx scripts/gen-taskade-mcp-tools.ts",
-    "lint": "eslint . --ext .ts",
+    "lint": "eslint --ext .ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
