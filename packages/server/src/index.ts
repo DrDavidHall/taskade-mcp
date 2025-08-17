@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import http from 'node:http';
 
-// keep existing exports so other code can import from this package
+// Preserve your public exports for other imports
 export * from './server';
 export * from './tools.generated';
 
