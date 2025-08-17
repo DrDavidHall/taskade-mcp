@@ -12,7 +12,10 @@
     "skipLibCheck": true,
     "types": ["node"],
     "moduleResolution": "bundler",
-    "declaration": true
+    "declaration": true,
+    "module": "commonjs",          // Important for Node compatibility
+    "esModuleInterop": true,       // Also helpful for compatibility
+    "sourceMap": true              // Optional: useful for debugging
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules"]
