@@ -5,7 +5,7 @@
     "composite": true,
     "lib": ["ESNext", "DOM"],
     "jsx": "react",
-    "outDir": "./lib",
+    "outDir": "./dist",
     "rootDir": "./src",
     "downlevelIteration": true,
     "resolveJsonModule": true,
@@ -20,5 +20,9 @@
     "src/**/*.ts",
     "src/**/*.tsx"
   ],
-  "exclude": ["node_modules", "./dist/**/*",  "./lib/**/*"],
+  "exclude": [
+    "node_modules",
+    "./dist/**/*",
+    "./lib/**/*"
+  ]
 }
