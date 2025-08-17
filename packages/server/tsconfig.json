@@ -13,10 +13,12 @@
     "types": ["node"],
     "moduleResolution": "bundler",
     "declaration": true,
-    "module": "commonjs",          // Important for Node compatibility
-    "esModuleInterop": true,       // Also helpful for compatibility
-    "sourceMap": true              // Optional: useful for debugging
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "noEmit": false,
+    "emitDeclarationOnly": false
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist"]
 }
