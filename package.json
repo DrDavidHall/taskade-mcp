@@ -9,7 +9,7 @@
   "scripts": {
     "build": "yarn workspace @taskade/mcp-server build",
     "start": "yarn workspace @taskade/mcp-server start",
-    "dev": "yarn workspace @taskade/mcp-server dev",
+    "dev": "cd packages/server && yarn run dev",
     "generate:taskade-mcp-tools": "yarn workspace @taskade/mcp-server generate:taskade-mcp-tools"
   }
 }
